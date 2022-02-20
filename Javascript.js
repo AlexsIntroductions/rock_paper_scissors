@@ -11,7 +11,7 @@ function computerPlay(){
 
 function playRound(playerSelection, computerSelection){
     if(playerSelection == computerSelection){
-        return "Its a tie!";
+        return "Its a tie! " + playerSelection + " ties " + computerSelection + "!";
     }
     else if(playerSelection == "rock" || computerSelection == "rock"){
         if(playerSelection == "rock"){
@@ -75,4 +75,11 @@ function game(){
     }
 }
 
-game();
+const buttons = document.querySelectorAll('button');
+const answer = document.querySelector('.answer-box');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        answer.textContent = playRound(button.id, computerPlay());
+    });
+});
